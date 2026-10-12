@@ -1,1 +1,62 @@
-<meta http-equiv="refresh" content="0; url=men%C3%BC%20atomiss.html">
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atomiss Kumpir Menü</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#000;--ink:#fff;--muted:#a8a8a8;--red:#e8392e;--yel:#ffd93b;--line:#3a3a3a;--chip:#1a1a1a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.4}
+header{padding:26px 20px 14px;text-align:center}
+.logo{font-family:"Trebuchet MS",Arial,sans-serif;font-weight:900;font-size:3rem;color:var(--red);margin:0;letter-spacing:-1px;text-shadow:2px 2px 0 #fff}
+.sub{font-size:2rem;font-weight:bold;margin:0;letter-spacing:2px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:10px 12px;display:flex;gap:8px;overflow-x:auto;border-bottom:2px solid var(--red);z-index:2}
+nav button{flex:none;border:0;border-radius:6px;padding:9px 14px;background:var(--yel);color:#2b1a0f;font:inherit;font-weight:bold;font-size:.95rem}
+nav button:focus-visible{outline:3px solid #fff}
+main{max-width:560px;margin:0 auto;padding:6px 20px 36px}
+h2{font-size:1.4rem;margin:26px 0 2px;color:var(--yel)}
+.note{margin:0 0 4px;color:var(--muted);font-size:.9rem;font-style:italic}
+.item{display:flex;align-items:baseline;gap:8px;padding:11px 0}
+.item .n{font-weight:bold;font-size:1.08rem}
+.dots{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px);min-width:16px}
+.p{font-weight:bold;color:var(--yel);font-size:1.1rem;white-space:nowrap}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 20px 30px}
+</style>
+</head>
+<body>
+<header>
+<p class="logo">atomiss</p>
+<p class="sub">KUMPİR</p>
+</header>
+<nav id="nav"></nav>
+<main id="menu"></main>
+<footer>Fiyatlar TL'dir. Afiyet olsun!</footer>
+<script>
+var MENU=[
+{k:"Kumpir",items:[["Sade",180],["Karışık",350],["3 Malzemeli",280]]},
+{k:"Tavuklu Pilav",note:"Chicken Crush",items:[["Tavuklu Pilav",200],["Köri Soslu",200],["Barbekü Soslu",200],["Acı Soslu",200],["Soya Soslu",200]]},
+{k:"Tavuklu Makarna",note:"Chicken Crush",items:[["Tavuklu Makarna",200],["Köri Soslu",200],["Barbekü Soslu",200],["Acı Soslu",200],["Soya Soslu",200]]},
+{k:"Tabaklar",items:[["Köfte Tabak",380],["Çıtır Tavuk",350],["Köri Soslu Tavuk",350],["Acı Soslu Tavuk",350],["Bonfile Izgara",350],["Karışık Izgara",380]]},
+{k:"Salatalar",items:[["Izgara Tavuk Salata",280],["Çıtır Tavuk Salata",280],["Sezar Salata",280]]},
+{k:"İçecekler",items:[["Küçük Ayran",40],["Büyük Ayran",50],["Kutu İçecek",80],["Soda",40]]}
+];
+var nav=document.getElementById("nav"),main=document.getElementById("menu");
+MENU.forEach(function(c,i){
+var b=document.createElement("button");b.textContent=c.k;b.onclick=function(){document.getElementById("c"+i).scrollIntoView({behavior:"smooth"});};nav.appendChild(b);
+var s=document.createElement("section");s.id="c"+i;
+var h=document.createElement("h2");h.textContent=c.k;s.appendChild(h);
+if(c.note){var q=document.createElement("p");q.className="note";q.textContent=c.note;s.appendChild(q);}
+c.items.forEach(function(it){
+var d=document.createElement("div");d.className="item";
+var n=document.createElement("span");n.className="n";n.textContent=it[0];
+var dots=document.createElement("span");dots.className="dots";
+var p=document.createElement("span");p.className="p";p.textContent=it[1]+" ₺";
+d.appendChild(n);d.appendChild(dots);d.appendChild(p);s.appendChild(d);});
+main.appendChild(s);});
+</script>
+</body>
+</html>
+
